@@ -1,0 +1,15 @@
+<h2>{{blog.title}}</h2>
+
+<form class="card">
+    <div class="image-label-container" >
+        <label class="image-label" for="image">Kies uw foto</label>    
+    </div>
+    <input class="image-input" type="file" name="image" id="image" alt="Upload foto" accept="image/png, image/gif, image/jpeg"/>
+    <label for="title">Titel: </label>
+    <input type="text" name="blog.title" id="title" [(ngModel)]="blog.title"/>
+    <label for="body">Blog post: </label>
+    <textarea class="body" name="body" [(ngModel)]="blog.body" id="body" rows="5" cols="1"></textarea>
+    <label for="author">Auteur: </label>
+    <input class="author" type="text" name="author" [(ngModel)]="blog.author" id="author"/>
+    <button type="submit">Publiceer Blog</button>
+</form>

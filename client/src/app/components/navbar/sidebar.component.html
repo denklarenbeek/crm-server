@@ -1,0 +1,31 @@
+<nav *ngIf="!isCollapsed" >
+    <div class="brand-logo">
+        <img src="http://via.placeholder.com/100x100?text=Logo"/>
+    </div>
+    <div class="nav-menu">
+        <div class="menu-header">
+            <h3>Content</h3>
+        </div>
+        <div class="">
+            <a href="/blogs" class="menu-item">Blogs</a>
+        </div>
+        <div class="">
+            <a class="menu-item">Pages</a>
+        </div>
+        <div class="">
+            <a class="menu-item">Images</a>
+        </div>
+        <div class="">
+            <a class="menu-item">Authors</a>
+        </div>
+        <div class="">
+            <a class="menu-item">Users</a>
+        </div>
+        <div class="menu-header">
+            <h3>Admin</h3>
+        </div>  
+    </div>
+    <div (click)="collapseSideBar()" class="close-menu">
+        <i class="fa fa-times" aria-hidden="true"></i>
+    </div>
+</nav>

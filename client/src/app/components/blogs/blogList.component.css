@@ -1,0 +1,30 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    text-align: left;
+}
+
+th {
+    border-bottom: 1px solid rgba(0,0,0,0.3);
+    padding: 10px;
+}
+
+td {
+    padding: 20px 10px;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+tbody tr {
+    cursor: pointer;
+}
+
+tbody tr:hover {
+    background-color: rgba(249,191,59, 0.1);
+}
+
+button {
+    margin-top: 20px;
+}

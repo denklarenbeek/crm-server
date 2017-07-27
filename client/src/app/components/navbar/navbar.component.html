@@ -1,0 +1,27 @@
+<nav>
+    <div *ngIf="isCollapsed" class="sidebar-collapsed" (click)="collapseSideBar()">
+        <i class="fa fa-bars" aria-hidden="true"></i>
+    </div>
+    <div class="main-menu">
+        <div class="menu-left">
+            <p>Settings</p>
+            <p>Blogs</p>
+            <div class="add-button">
+                <i class="fa fa-plus" aria-hidden="true" (click)="showDropdown()"></i>
+                <div *ngIf="dropdown" class="add-dropdown" (mouseleave)="showDropdown()">
+                    <a class="menu-item">Blog</a>
+                    <a class="menu-item">Page</a>
+                    <a class="menu-item">Image</a>
+                    <a class="menu-item">Author</a>
+                    <a class="menu-item">User</a>
+                </div>
+            </div> 
+        </div>
+        <div class="menu-right">
+            <div class="helpers-button">
+                Help <i class="fa fa-question" aria-hidden="true"></i>
+            </div>
+        </div>
+    </div>
+    
+</nav>

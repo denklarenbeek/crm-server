@@ -1,0 +1,22 @@
+<h2>{{title}}</h2>
+
+<table class="card">
+    <thead>
+        <tr>
+            <th>Titel</th>
+            <th>Auteur</th>
+            <th>Gepubliceerd?</th>
+            <th>Laatst Gewijzigd op:</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let blog of blogs" [routerLink]="['/blog', blog._id]" >
+            <td>{{blog.title}}</td>
+            <td>{{blog.author}}</td>
+            <td>{{blog.published}}</td>
+            <td>{{blog.publishedOn}}</td>
+        </tr>
+    </tbody>
+</table>
+
+<button type="button" (click)="showAllBlogs()" >Alle blogs</button>

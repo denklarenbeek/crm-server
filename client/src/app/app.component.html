@@ -1,0 +1,10 @@
+<div class="general-ui">
+  <app-sidebar [isCollapsed]="isCollapsed" (change)="navbarChanged($event)"></app-sidebar>
+  <div class="main-container">
+    <app-navbar class="inner" [isCollapsed]="isCollapsed" (change)="navbarChanged($event)"></app-navbar>
+    <div class="main-app inner">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+
