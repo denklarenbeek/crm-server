@@ -4,7 +4,6 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const expressValidator = require('express-validator');
 const index = require('./routes/index');
-const api = require('./routes/api');
 
 const port = 8000;
 
@@ -25,7 +24,10 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(expressValidator());
 app.use(cookieParser());
 
-app.use('/api', api);
+// Handle the API routes
+app.use('/api/v1', index);
+
+//Render the Angular 2 application on all routes exclude the API and let Angular hanlde the routes
 app.use('*', (req, res, next) => {
   res.sendFile(path.join(__dirname, 'client/dist/index.html'));  
 });

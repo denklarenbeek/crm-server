@@ -14,7 +14,7 @@ const blogSchema = new mongoose.Schema({
         require: "Please fill in the text of the blog"
     },
     createdOn: {
-        tpye: Date,
+        type: Date,
         default: Date.now
     }
 });
