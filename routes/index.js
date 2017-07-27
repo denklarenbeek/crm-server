@@ -1,10 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
-const Blog = require('../models/Blog');
+const Blog = mongoose.model('Blog');
 
-router.get('/blogs', (req, res, next) => {
-    res.send('Blog API')
+router.get('/blogs', async (req, res, next) => {
+    const blogs = await Blog.find();
+    res.json(blogs);
 });
 
 module.exports = router;
