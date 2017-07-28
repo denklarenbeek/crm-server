@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
+//Used to make some kind of permalinks of the URL
+const slug = require('slugs');
+
 const blogSchema = new mongoose.Schema({
     title: {
         type: String,
@@ -48,7 +51,7 @@ blogSchema.pre('save', async function(next){
     next();
 })
 
-// When the Title, Body or the Autoher is changed, change the LastModified Date
+// When the Title, Body or the Author is changed, change the LastModified Date
 blogSchema.pre('save', async function(next){
     if(!this.isModified('title') || !this.isModified('body') || !this.isModified('author')){
         next()

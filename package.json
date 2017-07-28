@@ -17,6 +17,8 @@
     "express": "^4.15.3",
     "express-validator": "^3.2.1",
     "mongoose": "^4.11.4",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "slug": "^0.9.1",
+    "slugs": "^0.1.3"
   }
 }
