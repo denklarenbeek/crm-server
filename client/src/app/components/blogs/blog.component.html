@@ -1,15 +1,18 @@
-<h2>{{blog.title}}</h2>
+<h2>{{blog?.title}}</h2> 
 
-<form class="card">
+<form *ngIf="blogForm" [formGroup]="blogForm" class="card">
     <div class="image-label-container" >
         <label class="image-label" for="image">Kies uw foto</label>    
     </div>
     <input class="image-input" type="file" name="image" id="image" alt="Upload foto" accept="image/png, image/gif, image/jpeg"/>
     <label for="title">Titel: </label>
-    <input type="text" name="blog.title" id="title" [(ngModel)]="blog.title"/>
+    <input formControlName="title" [(ngModel)]="blog.title" type="text" name="title" id="title" />
     <label for="body">Blog post: </label>
-    <textarea class="body" name="body" [(ngModel)]="blog.body" id="body" rows="5" cols="1"></textarea>
-    <label for="author">Auteur: </label>
-    <input class="author" type="text" name="author" [(ngModel)]="blog.author" id="author"/>
+    <textarea formControlName="body" class="body" name="body" id="body" rows="5" cols="1"></textarea>
+    <select formControlName="author" for="author" class="author">
+        <option *ngFor="let author of authors" [ngValue]="author._id">{{author.name}}</option>
+    </select>
+    <!-- <label for="author">Auteur: </label>
+    <input  class="author" type="text" name="author" id="author"/> -->
     <button type="submit">Publiceer Blog</button>
-</form>
+</form> 

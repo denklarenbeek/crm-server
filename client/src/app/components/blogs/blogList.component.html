@@ -5,16 +5,16 @@
         <tr>
             <th>Titel</th>
             <th>Auteur</th>
-            <th>Gepubliceerd?</th>
+            <th>Status</th>
             <th>Laatst Gewijzigd op:</th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let blog of blogs" [routerLink]="['/blog', blog._id]" >
             <td>{{blog.title}}</td>
-            <td>{{blog.author}}</td>
-            <td>{{blog.published}}</td>
-            <td>{{blog.publishedOn}}</td>
+            <td>{{blog.author.name}}</td>
+            <td>{{blog.status}}</td>
+            <td>{{blog.lastModified}}</td>
         </tr>
     </tbody>
 </table>

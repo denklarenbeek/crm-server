@@ -13,18 +13,19 @@ exports.addBlog = async (req, res, next) => {
 };
 
 exports.getAllBlogs = async (req, res, next) => {
-    const blogs = await Blog.find();
+    const blogs = await Blog.find().populate('author');
     res.json(blogs);
 };
 
 exports.getOneBlog = async (req, res, next) => {
-    const blog = await Blog.findOne({_id: req.params.id});
+    const blog = await Blog.findOne({_id: req.params.id}).populate('author');
     res.json(blog);
-}
+};
 
 exports.updateOneBlog = async (req, res, next) => {
     const author = await Author.findOne({name: req.body.author})
     req.body.author = author._id;
+    req.body.lastModified = Date.now();
     if(req.body.title){
         req.body.slug = await slugGenerator(req.body.title);
     }
