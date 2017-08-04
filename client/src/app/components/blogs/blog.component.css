@@ -65,3 +65,15 @@ form button {
     margin-right: auto;
     margin-top: 20px;
 }
+
+.button-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.second-button {
+    background-color: #222b37;
+    color: white;
+    border: none;
+}

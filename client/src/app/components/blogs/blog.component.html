@@ -12,5 +12,8 @@
     <select formControlName="author" for="author" class="author">
         <option *ngFor="let author of authors" [ngValue]="author._id">{{author.name}}</option>
     </select>
-    <button type="submit">Publiceer Blog</button>
+    <div class="button-container" >
+        <button class="second-button" type="submit">Bewaar Blog</button>
+        <button (click)="publicate()" class="primary-button"  type="button">Publiceer Blog</button>
+    </div>
 </form> 

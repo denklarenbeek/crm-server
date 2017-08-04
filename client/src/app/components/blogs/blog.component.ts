@@ -84,6 +84,26 @@ export class BlogComponent implements OnInit {
                 console.log('Updated response')
                 this.messages.addMessage(`Blog "${this.blog.title}" updated`, 'success');
             });
-        }   
+        };
+    };
+
+    private publicate() {
+        this.blog.author = this.blogForm.get('author').value;
+        this.blog.body = this.blogForm.get('body').value;
+        this.blog.title = this.blogForm.get('title').value;
+        this.blog.status = 'Published';
+
+        this.route.params.subscribe((result) => {
+            if(!Object.keys(result).length) {
+                this.dataService.createOneBlog(this.blog).subscribe((result) => {
+                    this.messages.addMessage(`Blog "${result.title}" is published`, 'success');
+                    this.router.navigate([`/blog/${result._id}`]);
+                });
+            } else {
+                this.dataService.updateOneBlog(this.blog).subscribe((result) => {
+                    this.messages.addMessage(`Blog "${result.title}" is published`, 'success');
+                });
+            };
+        });
     };
 };
