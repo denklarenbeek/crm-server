@@ -1,9 +1,10 @@
 @import '~font-awesome/css/font-awesome.css';
 @import url('https://fonts.googleapis.com/css?family=PT+Serif');
+@import url('https://fonts.googleapis.com/css?family=Dosis');
 
 /* You can add global styles to this file, and also import other style files */
 * {
-    font-family: 'PT Serif', serif;
+    font-family: 'PT Serif', sans-serif;
 }
 
 body {

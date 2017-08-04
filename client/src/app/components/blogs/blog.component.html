@@ -1,6 +1,6 @@
 <h2>{{blog?.title}}</h2> 
 
-<form *ngIf="blogForm" [formGroup]="blogForm" class="card">
+<form *ngIf="blogForm" [formGroup]="blogForm" (ngSubmit)="onSubmit($event)" class="card">
     <div class="image-label-container" >
         <label class="image-label" for="image">Kies uw foto</label>    
     </div>
@@ -12,7 +12,5 @@
     <select formControlName="author" for="author" class="author">
         <option *ngFor="let author of authors" [ngValue]="author._id">{{author.name}}</option>
     </select>
-    <!-- <label for="author">Auteur: </label>
-    <input  class="author" type="text" name="author" id="author"/> -->
     <button type="submit">Publiceer Blog</button>
 </form> 

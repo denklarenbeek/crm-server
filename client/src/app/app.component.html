@@ -2,8 +2,11 @@
   <app-sidebar [isCollapsed]="isCollapsed" (change)="navbarChanged($event)"></app-sidebar>
   <div class="main-container">
     <app-navbar class="inner" [isCollapsed]="isCollapsed" (change)="navbarChanged($event)"></app-navbar>
-    <div class="main-app inner">
-      <router-outlet></router-outlet>
+    <div class="main-app">
+      <app-message class="message-bar"></app-message>
+      <div class="inner">
+        <router-outlet></router-outlet>
+      </div>
     </div>
   </div>
 </div>

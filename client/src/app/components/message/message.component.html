@@ -1,0 +1,6 @@
+<div *ngIf="messages.length > 0" class="message-bar__container" >
+    <div  *ngFor="let message of messages" [ngClass]="{'success': message.status === 'success'}" class="message-bar__container__text">
+        <p>{{message.text}}</p>
+        <i  (click)="removeMessage(message.text)" class="fa fa-times" aria-hidden="true"></i>
+    </div>
+</div>

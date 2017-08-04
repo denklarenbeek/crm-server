@@ -12,6 +12,10 @@ export const appRoutes: Routes = [
         component: BlogListComponent 
     },
     {
+        path: 'blog',
+        component: BlogComponent
+    },
+    {
         path: 'blog/:id',
         component: BlogComponent
     }

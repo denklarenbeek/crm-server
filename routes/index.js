@@ -8,8 +8,8 @@ const { addAuthor, getAllAuthors, getOneAuthor, updateOneAuthor, deleteOneAuthor
 const { addBlog, getAllBlogs, getOneBlog, updateOneBlog, deleteOneBlog } = require('../controllers/blogController');
 
 router.get('/blogs', catchErrors(getAllBlogs));
-router.post('/blogs', catchErrors(addBlog));
 
+router.post('/blog', catchErrors(addBlog));
 router.get('/blog/:id', catchErrors(getOneBlog));
 router.put('/blog/:id', catchErrors(updateOneBlog));
 router.delete('/blog/:id', catchErrors(deleteOneBlog));

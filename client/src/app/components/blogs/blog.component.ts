@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, Headers, RequestOptions } from '@angular/http';
 import { FormGroup, FormControl, FormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from '../../services/dataService.service';
 import { Blog } from '../../services/blog.model';
+import { MessageService } from '../../services/messageService.service';
 
 @Component({
     selector: 'app-blog',
@@ -16,33 +17,73 @@ export class BlogComponent implements OnInit {
     id: number;
     sub: any;
     title:string = "Wordt titel de blog";
-    blog: any;
+    blog: any = {};
+    author: string;
     authors: any;
-    param: string = '597b7d5f727823a4ad3b8f8f'
+    param: string;
     
-    constructor(private dataService: DataService, private fb: FormBuilder){
-
-    }
+    constructor (
+        private dataService: DataService, 
+        private fb: FormBuilder, 
+        private route: ActivatedRoute,
+        private router: Router,
+        private messages: MessageService
+    ){ }
     
     ngOnInit() {
-        this.dataService.getOneBlog(this.param)
+        this.route.params.subscribe((result) => {
+            if(!Object.keys(result).length){
+                this.initForm('', '', '')
+                this.getAuthors();
+                return;
+            };
+            this.param = result['id']
+
+            this.dataService.getOneBlog(this.param)
             .subscribe((result) => {
                 this.blog = result
+                this.getAuthors()
+                this.initForm(this.blog['title'], this.blog['body'], this.blog['author']._id)
+            });
+        }); 
+    };
 
-                this.dataService.getAuthors()
-                    .subscribe((result) => {
-                        this.authors = result
-                        this.initForm()
-                    })
+    private getAuthors(){
+        this.dataService.getAuthors()
+            .subscribe((result) => {
+                this.authors = result
             });
     };
 
     // Init the form when the data actually back from the sever instead of rendering it async
-    private initForm(){
+    private initForm(titleObject, bodyObject, authorObject){
         this.blogForm = this.fb.group({
-            title: [this.blog.title],
-            body: [this.blog.body],
-            author: [this.blog.author._id]
+            title: [titleObject],
+            body: [bodyObject],
+            author: [authorObject]
         });
-    }
+    };
+
+    private onSubmit(e){
+        e.preventDefault();
+        this.blog.author = this.blogForm.get('author').value;
+        this.blog.body = this.blogForm.get('body').value;
+        this.blog.title = this.blogForm.get('title').value;
+        if(this.param === undefined) {
+            const blog = Object.keys(this.blog);
+            console.log(this.blog);
+            debugger;
+            this.dataService.createOneBlog(this.blog).subscribe((result) => {
+                const blogId = result._id;
+                console.log('Created response')
+                // this.messages.addMessage('Blog created', 'success');
+                this.router.navigate([`/blog/${blogId}`])
+            })
+        } else {
+            this.dataService.updateOneBlog(this.blog).subscribe ((result) => {
+                console.log('Updated response')
+                this.messages.addMessage(`Blog "${this.blog.title}" updated`, 'success');
+            });
+        }   
+    };
 };

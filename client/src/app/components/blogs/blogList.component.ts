@@ -22,13 +22,11 @@ export class BlogListComponent implements OnInit{
         this.dataService.getBlogs()
             .subscribe(blogs => {
                 this.blogs = blogs;
-                console.log(blogs);
             });
     };
 
     showAllBlogs(){
         this.title = "Alle Blogs";
-        // this.blogs = allBlogs.posts;
     }
 
     

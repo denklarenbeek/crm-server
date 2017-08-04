@@ -6,15 +6,17 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { appRoutes } from './app.routes';
 import { DataService } from './services/dataService.service';
+import { MessageService } from './services/messageService.service';
 import 'rxjs/Rx';
 
 import 
   { 
     SidebarComponent, 
     NavbarComponent, 
+    MessageComponent,
     DashboardComponent, 
     BlogListComponent, 
-    BlogComponent 
+    BlogComponent
   } from './components/index';
   
 import { AppComponent } from './app.component';
@@ -24,6 +26,7 @@ import { AppComponent } from './app.component';
     AppComponent,
     SidebarComponent,
     NavbarComponent,
+    MessageComponent,
     DashboardComponent,
     BlogListComponent,
     BlogComponent
@@ -38,7 +41,7 @@ import { AppComponent } from './app.component';
       { enableTracing: true }
     )
   ],
-  providers: [DataService],
+  providers: [DataService, MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

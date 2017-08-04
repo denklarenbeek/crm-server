@@ -5,8 +5,7 @@ const Blog = mongoose.model('Blog');
 const { slugGenerator } = require('../handlers/slugGenerator');
 
 exports.addBlog = async (req, res, next) => {
-    const author = await Author.findOne({ name: req.body.author })
-    req.body.author = author._id;
+    console.log(req.body);
     const blog = new Blog(req.body);
     await blog.save();
     res.json(blog);
@@ -23,8 +22,6 @@ exports.getOneBlog = async (req, res, next) => {
 };
 
 exports.updateOneBlog = async (req, res, next) => {
-    const author = await Author.findOne({name: req.body.author})
-    req.body.author = author._id;
     req.body.lastModified = Date.now();
     if(req.body.title){
         req.body.slug = await slugGenerator(req.body.title);
